@@ -53,9 +53,21 @@
 }
 
 body{
-	background-image: url("bg3.jpg");
+	background-image: url("bg4.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
 	background-size:cover;
 }
+footer{
+	position:fixed;
+	left:0;
+	right:0;
+	width:100%;
+	background-color:red;
+	color:white;
+	text-align:center;
+}
+
+
+
