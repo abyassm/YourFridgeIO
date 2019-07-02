@@ -22,42 +22,21 @@
          } 
       </script> 
       <!-- for styling -->
-      <style> 
-         .title{ 
-         margin-bottom: 10px; 
-         text-align:center; 
-         width: 420px; 
-         color:rgb(0, 0, 0); 
-         border: solid black 2px; 
-         font-size:45px;
-         font-family: Verdana, Geneva, Tahoma, sans-serif;
-         } 
-  
-         input[type="button"] 
-         { 
-         background-color:rgb(0, 0, 0); 
-         color: rgb(255, 255, 255); 
-         border: solid white; 
-         width:100px; 
-         height:100px;
-         } 
-  
-         input[type="text"] 
-         { 
-         font-size: 54px;
-         background-color:white; 
-         border: solid black 2px; 
-         width:310px;
-         height:100px; 
-         } 
+      
       </style> 
    </head> 
-   <!-- create table -->
    <body> 
-      <div class = title >Calorie Calculator</div> 
-      <table border="1"> 
+   <main >
+   <!-- create table -->
+   
+      <link rel="stylesheet" href="calc_style.css">
+      <div class = title style="margin-top:8px">Calorie Calculator</div>
+      <table> 
+         <tr>
+            <td colspan="4"><input type="text" id="Food name" placeholder="Food Name"/></td> 
+         </tr>
          <tr> 
-            <td colspan="3"><input type="text" id="result"/></td> 
+            <td colspan="3"><input type="text" id="result" placeholder="Calory Count"/></td> 
             <!-- clr() function will call clr to clear all value -->
             <td><input type="button" value="c" onclick="clr()"/> </td> 
          </tr> 
@@ -67,7 +46,7 @@
             <td><input type="button" value="1" onclick="dis('1')"/> </td> 
             <td><input type="button" value="2" onclick="dis('2')"/> </td> 
             <td><input type="button" value="3" onclick="dis('3')"/> </td> 
-            <td><input type="button" value="/" onclick="dis('/')"/> </td> 
+            <td><input type="button" value="+" onclick="dis('+')"/> </td> 
          </tr> 
          <tr> 
             <td><input type="button" value="4" onclick="dis('4')"/> </td> 
@@ -79,15 +58,44 @@
             <td><input type="button" value="7" onclick="dis('7')"/> </td> 
             <td><input type="button" value="8" onclick="dis('8')"/> </td> 
             <td><input type="button" value="9" onclick="dis('9')"/> </td> 
-            <td><input type="button" value="+" onclick="dis('+')"/> </td> 
-         </tr> 
-         <tr> 
-            <td><input type="button" value="." onclick="dis('.')"/> </td> 
             <td><input type="button" value="0" onclick="dis('0')"/> </td> 
-            <!-- solve function call function solve to evaluate value -->
-            <td><input type="button" value="=" onclick="solve()"/> </td> 
-            <td><input type="button" value="*" onclick="dis('*')"/> </td> 
          </tr> 
+         <tr>
+            <td colspan="4"><input type="button" value="=" onclick="solve()"/> </td>
+         </tr>
       </table> 
+       
+      <!--
+      <br>
+      <button>Meat</button>
+      <button>Vegetables</button>
+      <button>Carbohydrates</button>
+      -->
+   </main>
+   <!-- left sidebar (clicking the plus button should 
+      add to the total and add the element to the list of elements) -->
+   <div class="sidenav">
+   <input type="text" placeholder="Search">
+   <a style="background-color:white"></a>
+   <b>Quick Suggestions:</b>
+   <div class="Suggestions">
+   <a>Coffee <cals>100</cals>   <input type="button" value="+"/>   </a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   <a>FOod <cals>100</cals>  <input type="button" value="+"/></a>
+   </div>
+   </div>
+   <div class="rsidenav">
+      <p>Total:<total>20</total></p>
+   </div>
    </body> 
 </html>    

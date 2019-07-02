@@ -1,0 +1,128 @@
+body{
+    margin-left:5%;
+    margin-right:10%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.title{ 
+margin-bottom: 10px; 
+text-align:center; 
+width: 420px; 
+color:rgb(0, 0, 0); 
+border: solid black 2px; 
+font-size:45px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+} 
+
+td{
+width:100px;
+}
+td input[type="button"]  { 
+background-color:rgb(0, 0, 0); 
+color: rgb(255, 255, 255); 
+border: solid white; 
+width:100%; 
+height:100px;
+} 
+  
+input[type="text"] { 
+font-size: 48px;
+background-color:white; 
+border: solid black 2px; 
+width:100%;
+height:100px; 
+} 
+
+button
+{
+width:100px;
+height:50px;
+}
+main{
+margin-left:25%;
+position:relative;
+}
+.sidenav{
+width:17%;
+height:100%;
+margin:2%;
+position: fixed;
+top:0;
+}
+.sidenav input[type=text]{
+width:100%;
+float: right;
+padding: 6px;
+border: none;
+margin-top: 8px;
+font-size: 17px;
+border:ridge;
+border-color:black;
+height:30px;
+}
+
+.sidenav a{
+border-color:black;
+font-size:24px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+background-color: #e9e9e9;
+color: black;
+display: block;
+transition:0.3s;
+text-align: left;
+height:40px;
+width:100%;
+}
+
+.sidenav a:hover{
+background-color:#f1f1f1;
+}
+
+.sidenav a input[type=button]{
+right:5px;
+margin:0 auto;
+float:right;
+background-color: grey;
+border:none;
+height:100%;
+font-size: 32px;
+}
+
+.sidenav a input[type=button]:hover{
+background-color: #2196F3;
+}
+
+.sidenav a cals{
+font-size:32px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+margin: 0 auto;
+text-align:center;
+}
+
+.sidenav b{
+border-color:black;
+font-size:17px;
+background-color: rgb(255, 255, 255);
+color: black;
+display: block;
+transition:0.3s;
+text-align: left;
+}
+
+.suggestions{
+height:400px;
+width:100%;
+overflow:scroll;
+}
+.rsidenav{
+width:20%;
+
+}
+.results{
+height:400px;
+width:100%;
+overflow:scroll;
+}
+
+.total{
+width:50px;
+}
