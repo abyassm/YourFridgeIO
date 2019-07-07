@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>About Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '../static/css/about.css' %}">
+    <div class = "head_style"></div>
+    <!-- <img src="../static/images/about_header.jpg" alt="IMG"> -->
+</head>
+
+<body>
+    {% include "recipes/navbar.html" %}
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Blue</span>WaveCook</h1>
+            </div>
+            <!-- <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </nav> -->
+        </div>
+    </header>
+    
+    <section id="newsletter">
+        <div class="container">
+            <h1>Subscribe To Our Newsletter</h1>
+            <form  action="" method="post" class="form-horizontal">
+            {% csrf_token %}
+                <input type="email" placeholder="Enter Email...">
+                <button type="submit" class="button_1">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="main">
+        <div class="container">
+            <article id="main-col">
+                <h1 class="page-title">About Us</h1>
+                <p>
+                    BlueWaveCook application is a user-friendly application where you can you have access to 1000s of recipes and 
+                    healthy diet of your own choice. This is inspired by the challenge that students face on how to prepare a healthy meal
+                    given their time constraint and budget restrictions.
+.
+                </p>
+                <p class="dark">
+                    User Experience Comments to go here!<br>
+                    "Cooking is sometimes too hard to get into, and recipes often take a variety of ingredients and with
+                    beginner/intermediate level cooking skills, experimentation and saving recipes is important.
+                    Our project will not only have a database of available recipes from multiple sources, but users will also be able to
+                    create, filter, find and create their own recipes which they can save in their workbooks within the website. Find that
+                    you’ve created a new recipe that you want to share with the rest of the world? Post it on your public feed where others
+                    can view, comment and interact with you. -> abrahman"
+
+                </p>
+            </article>
+    
+            <aside id="sidebar">
+                <div class="dark">
+                    <h3>What We Do</h3>
+                    <p>A summary of what we do will go here!</p>
+                </div>
+            </aside>
+        </div>
+    </section>
+    
+    <!-- <footer>
+        <p>BlueWaveCook, Copyright &copy; 2019</p>
+    </footer> -->
+
+
+
+    {% include "recipes/footer.html" %}
+
+
+
+</body>
+
+</html>

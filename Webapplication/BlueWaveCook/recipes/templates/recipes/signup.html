@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '../static/css/signup.css' %}">
+</head>
+
+<body>
+    {% include "recipes/navbar.html" %}
+
+    <div class="container">
+
+        {% if registered %}
+        <h1>Thank you for registering!</h1>
+        <div class="ui success message">
+            <i class="close icon"></i>
+            <div class="header">
+                Your user registration was successful.
+            </div>
+            <p>You may now log-in with the username you have chosen</p>
+        </div>
+        {% else %}
+        <div class='ui container'>
+            <h2>Sign up</h2>
+            <div class="ui raised form segment">
+                <p>Don't have an account? Let's go ahead and get you signed up.</p>
+
+                <form enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+
+                    {% for field in user_form %}
+                    <div class="field">
+                        <label form="{{field.name}}" style="display:inline-block;">{{field.label}}</label>
+                        <div style="width: 50%;">{{field }} </div>
+                    </div>
+
+                    {% endfor %}
+
+                    <div class="inline field">
+                        <input type="checkbox" name="terms">
+                        <label>I agree to the Terms and Conditions</label>
+                    </div>
+                    <div class="actions">
+                        <input type="submit" name="commit" value="Register" class="ui primary button">
+                    </div>
+                    <div class="ui hidden error message">
+                        We already have that email registered. Have you<a href="#"> forgotten your password?</a>
+                    </div>
+
+                </form>
+                <div class="ui center aligned segment">
+                    <h5>Already have an account?</h5>
+                    <button onclick="location.href='/login/';" class="ui teal button">Log in</button>
+                </div>
+
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+    {% include "recipes/footer.html"%}
+   
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LogIn Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '../static/css/login.css' %}">
+</head>
+
+<body>
+    {% include "recipes/navbar.html" %}
+
+    
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        <div class="ui raised very padded center aligned text container segment">
+            <h1 class="ui header">Log in</h1>
+            <br>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user outline icon"></i>
+                    <input type="text" name="username" placeholder="Username" autofocus="true" required>
+                </div>
+            </div>
+            <br>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+            </div>
+            <br>
+            <div class="actions">
+                <button class=" ui large teal button" type="submit">Log in</button>
+            </div>
+            <br>
+            <p>Don't have an account? <a href="/signup/"> Sign up </a></p>
+        </div>
+
+    </form>
+
+    {% include "recipes/footer.html" %}
+
+
+
+</body>
+
+</html>

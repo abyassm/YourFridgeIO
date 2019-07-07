@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recipes Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '../static/css/recipes.css' %}">
+</head>
+
+<body>
+    {% include "recipes/navbar.html" %}
+    <p>Recipes coming soon!</p>
+
+    
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">search</button>
+    </form>
+    {% if search_result %}
+        {% if search_result.success %}
+            {% for result in search_result.results %}
+                
+                <h3>{{ result.title }}</h3>
+                <img src="{{ result.thumbnail }}" alt="">
+                <p>{{ result.href }}</p>
+                <p>{{ result.ingredients }}</p>
+                <p>{{ result.thumbnail }}</p>
+                
+                
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    
+    <article class='recipe-card'>
+        <h2>Creamy Carrot Soup</h2>
+        <div id='carousel' class='recipe-pic-frame'>
+            <div id='sliderBox' class='slider-box'>
+                <div class='recipe-pic pic1' role='img'></div>
+                <div class='recipe-pic pic2' role='img'></div>
+                <div class='recipe-pic pic3' role='img'></div>
+            </div>
+        </div>
+        <section>
+            <h3>Ingredients</h3>
+            <ul class='ingredient-list'>
+                <li>1 tablespoon butter</li>
+                <li>
+                    1 tablespoon extra-virgin olive oil</li>
+                <li>
+                    1 medium onion, chopped</li>
+                <li>
+                    1 stalk celery, chopped</li>
+                <li>
+                    2 cloves garlic, chopped</li>
+                <li>
+                    1 teaspoon chopped fresh thyme or parsley</li>
+                <li>
+                    5 cups chopped carrots</li>
+                <li>
+                    2 cups water</li>
+                <li>
+                    4 cups reduced-sodium chicken broth, “no-chicken” broth (see Note) or vegetable broth</li>
+                <li>
+                    1/2 cup half-and-half (optional)</li>
+                <li>
+                    1/2 teaspoon salt</li>
+                <li>
+                    Freshly ground pepper to taste</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Preperation</h3>
+    
+            <p>Heat butter and oil in a Dutch oven over medium heat until the butter melts. Add onion and celery; cook,
+                stirring occasionally, until softened, 4 to 6 minutes. Add garlic and thyme (or parsley); cook, stirring,
+                until fragrant, about 10 seconds.</p>
+            <p>
+                Stir in carrots. Add water and broth; bring to a lively simmer over high heat. Reduce heat to maintain a
+                lively simmer and cook until very tender, about 25 minutes. Puree the soup in batches in a blender until
+                smooth. (Use caution when pureeing hot liquids.)
+                Stir in half-and-half (if using), salt and pepper.</p>
+        </section>
+        <section>
+            <h3>Tips &amp; Notes</h3>
+            <p>
+                Make Ahead Tip: Cover and refrigerate for up to 4 days or freeze for up to 3 months.
+                <p>
+                    <p>Note: Chicken-flavored broth, a vegetarian broth despite its name, is preferable to vegetable broth
+                        in some recipes for its hearty, rich flavor. Sometimes called “no-chicken” broth, it can be found
+                        with the soups in the natural-foods section of
+                        most supermarkets.</p>
+        </section>
+        <section>
+            <h3>Nutrition</h3>
+            <p>Per serving: 77 calories; 3 g fat (1 g sat, 2 g mono); 4 mg cholesterol; 10 g carbohydrates; 0 g added
+                sugars; 3 g protein; 3 g fiber; 484 mg sodium; 397 mg potassium.</p>
+    
+            <p>Nutrition Bonus: Vitamin A (269% daily value).</p>
+    
+            <p>Carbohydrate Servings: 1/2</p>
+    
+            <p>Exchanges: 1 vegetable, 1 fat</p>
+        </section>
+    </article>
+    
+    
+    
+    {% include "recipes/footer.html" %}
+
+</body>
+
+</html>
