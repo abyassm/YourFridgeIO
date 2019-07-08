@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">BlueWaveCook</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -13,7 +11,7 @@
                 <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                
+
                 <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
             <li class="nav-item">
@@ -23,20 +21,23 @@
                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact' %}">Shop</a> <!--needs change-->
+                <a class="nav-link" href="{% url 'contact' %}">Shop</a>
+                <!--needs change-->
             </li>
             {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="sign out alternate icon"></i>Logout</a>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i
+                        class="sign out alternate icon"></i>Logout</a>
             </li>
             {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="sign in alternate icon"></i>LogIn</a></li>
-            
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i
+                        class="sign in alternate icon"></i>LogIn</a></li>
+
             {% endif %}
             <!-- <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li> -->
-            
+
         </ul>
-        
+
     </div>
 </nav>

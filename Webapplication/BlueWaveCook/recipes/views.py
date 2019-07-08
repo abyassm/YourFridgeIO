@@ -78,6 +78,12 @@ def signup_user(request):
   return render(request, 'recipes/signup.html', {'user_form': user_form, 'registered': registered})
 
 
+@login_required
+def logout_user(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('index'))
+
+
 def recipes(request):
     search_result = {}
     if 'recipe' in request.GET:
