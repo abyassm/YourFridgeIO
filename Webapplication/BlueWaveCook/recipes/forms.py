@@ -1,4 +1,4 @@
-from .models import Signup
+
 from django import forms
 from django.core import validators
 from django.contrib.auth.forms import AuthenticationForm
@@ -10,23 +10,23 @@ import requests
 
 
 class UserForm(forms.ModelForm):
-  password = forms.CharField(label="Password", widget=forms.PasswordInput())
-  passwordconfirm = forms.CharField(
+      password = forms.CharField(label="Password", widget=forms.PasswordInput())
+      passwordconfirm = forms.CharField(
       label="Password confirmation", widget=forms.PasswordInput())
 
-  class Meta():
-    model = User
-    fields = ('first_name', 'last_name', 'username',
-              'email', 'password', 'passwordconfirm')
+      class Meta():
+        model = User
+        fields = ('first_name', 'last_name', 'username',
+                'email', 'password', 'passwordconfirm')
   # this function will be used for the validation
-  def clean(self):
+      def clean(self):
 
-    form_data = self.cleaned_data
-    if form_data['password'] != form_data['passwordconfirm']:
-        # Will raise a error message
-        self._errors["password"] = ["Passwords do not match"]
-        del form_data['password']
-    return form_data
+        form_data = self.cleaned_data
+        if form_data['password'] != form_data['passwordconfirm']:
+            # Will raise a error message
+            self._errors["password"] = ["Passwords do not match"]
+            del form_data['password']
+        return form_data
 
 
 class UserLogin(AuthenticationForm):
