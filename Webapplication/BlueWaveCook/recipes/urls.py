@@ -11,4 +11,5 @@ urlpatterns = [
     path('signup/', views.signup_user, name='signup'),
     path('footer/', views.footer, name='footer'),
     path('logout/', views.logout_user, name='logout'),
+    path('add_recipe/', views.form_view, name="add_recipe"),
 ]

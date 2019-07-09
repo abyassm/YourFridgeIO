@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Recipe
 from django.db.models import Q
-# from . models import AddNewRecipe
+from . models import AddNewRecipe
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -118,3 +118,32 @@ def recipes(request):
 
     else:
         return render(request, 'recipes/recipes.html')
+
+
+@login_required(login_url='/login/')
+def form_view(request):
+
+    form = forms.NewRecipe(request.POST, request.FILES)
+
+    if request.method == 'POST':
+        form = forms.NewRecipe(request.POST, request.FILES)
+
+        if form.is_valid():
+            #add form to data base, do something
+            recipe_title = form.cleaned_data['title']
+            recipe_image = form.cleaned_data['image']
+            recipe_ingredients = form.cleaned_data['ingredients']
+            recipe_preparation = form.cleaned_data['preparation']
+            recipe_tips = form.cleaned_data['tips']
+            recipe_nutrition = form.cleaned_data['nutrition']
+
+            new_recipe = AddNewRecipe(title=recipe_title, image=recipe_image, ingredients=recipe_ingredients, preparation=recipe_preparation,
+                                      tips=recipe_tips, nutrition=recipe_nutrition)
+            new_recipe.save()
+
+            print("Validation success!")
+            # redirect, i want to update this so that it goes to the beer lists page later
+            return HttpResponse("Recipe added. Thank you")
+    else:
+        form = forms.NewRecipe()
+    return render(request, 'recipes/addrecipe.html', {'form': form})

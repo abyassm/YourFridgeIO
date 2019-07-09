@@ -7,7 +7,13 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.conf import settings
 import requests
+from .models import AddNewRecipe
 
+
+class NewRecipe(forms.ModelForm):
+    class Meta():
+        model = AddNewRecipe
+        fields = '__all__'
 
 class UserForm(forms.ModelForm):
       password = forms.CharField(label="Password", widget=forms.PasswordInput())
