@@ -10,7 +10,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Recipe
 from django.db.models import Q
-from . models import AddNewRecipe
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -129,16 +128,14 @@ def form_view(request):
         form = forms.NewRecipe(request.POST, request.FILES)
 
         if form.is_valid():
-            #add form to data base, do something
-            recipe_title = form.cleaned_data['title']
+            recipe_name = form.cleaned_data['name']
             recipe_image = form.cleaned_data['image']
             recipe_ingredients = form.cleaned_data['ingredients']
-            recipe_preparation = form.cleaned_data['preparation']
-            recipe_tips = form.cleaned_data['tips']
-            recipe_nutrition = form.cleaned_data['nutrition']
+            recipe_calories = form.cleaned_data['calories']
+            recipe_instructions = form.cleaned_data['instructions']
 
-            new_recipe = AddNewRecipe(title=recipe_title, image=recipe_image, ingredients=recipe_ingredients, preparation=recipe_preparation,
-                                      tips=recipe_tips, nutrition=recipe_nutrition)
+            new_recipe = Recipe(name=recipe_name, image=recipe_image, ingredients=recipe_ingredients, calories=recipe_calories,
+                                instructions=recipe_instructions)
             new_recipe.save()
 
             print("Validation success!")
