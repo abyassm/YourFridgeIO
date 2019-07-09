@@ -15,22 +15,27 @@
     <p>Recipes coming soon!</p>
 
     
-    <form method="get">
-        {{ form.as_p }}
-        <button type="submit">search</button>
+    <form action="{% url 'recipes' %}" method="GET" value="{{request.GET.q}}">
+        <!-- {{ form.as_p }} -->
+        Search<input type="text" name="q" value="{{request.GET.q}}">
+        <button type="submit" name="submit" value="Search">search</button>
+
     </form>
-    {% if search_result %}
-        {% if search_result.success %}
-            {% for result in search_result.results %}
-                
-                <h3>{{ result.title }}</h3>
-                <img src="{{ result.thumbnail }}" alt="">
-                <p>{{ result.href }}</p>
-                <p>{{ result.ingredients }}</p>
-                <p>{{ result.thumbnail }}</p>
-                
-                
+    {% if submitbutton == 'Search' and request.GET.q != '' %}
+        {% if results %}
+            <h1>Results for <b>{{ request.GET.q }}</b></h1>
+            <br /><br />
+    
+            {% for result in results %}
+    
+                {{result.name}}
+                <br />
+                {{ result.image.url }}
+                <br />
+
             {% endfor %}
+        {% else %}
+        No search results for this query
         {% endif %}
     {% endif %}
     

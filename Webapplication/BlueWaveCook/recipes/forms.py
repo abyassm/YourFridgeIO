@@ -50,31 +50,6 @@ class RecipeForm(forms.Form):
     recipe = forms.CharField(max_length=150)
 
     def search(self):
-        r = requests.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?",
-                         headers={
-                             "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-                             "X-RapidAPI-Key": "dd9d865db7mshfe856a8c5b93cf5p18212djsnb73b6d390fb9"
-                         }
-                         )
-        print("The STATUS CODE IS: ", r.status_code)
-
         result = {}
         recipe = self.cleaned_data['recipe']
-        print("Recipe searched is: ", recipe)
-        # fill with api endpoint
-        url = 'http://www.recipepuppy.com/api/?i=%s' % recipe
-        print('searching the url: ', url)
-        response = requests.get(url)
-
-        print("The search code was: ", response)
-        if response.status_code == 200:  # success
-            result = response.json()
-            print("api result is: ", result['title'])
-            result['success'] = True
-        else:
-            result['success'] = False
-            if response.status_code == 404:  # not found
-                result['message'] = 'No entry for "%s"' % recipe
-            else:
-                result['message'] = 'The API is not available at the moment. Please try again later.'
         return result

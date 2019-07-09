@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .models import Recipe
+from django.db.models import Q
 # from . models import AddNewRecipe
 from django.contrib.auth.models import User
 # Create your views here.
@@ -84,12 +86,35 @@ def logout_user(request):
 	return HttpResponseRedirect(reverse('index'))
 
 
+# # def recipes(request):
+#     search_result = {}
+#     if 'recipe' in request.GET:
+#         form = forms.RecipeForm(request.GET)
+#         if form.is_valid():
+#             search_result = form.search()
+#     else:
+#         form = forms.RecipeForm()
+#     return render(request, 'recipes/recipes.html', {'form': form, 'search_result': search_result})
+
+
 def recipes(request):
-    search_result = {}
-    if 'recipe' in request.GET:
-        form = forms.RecipeForm(request.GET)
-        if form.is_valid():
-            search_result = form.search()
+    if request.method == 'GET':
+        query = request.GET.get('q')
+
+        submitbutton = request.GET.get('submit')
+
+        if query is not None:
+            lookups = Q(name__icontains=query)
+
+            results = Recipe.objects.filter(lookups).distinct()
+
+            context = {'results': results,
+                       'submitbutton': submitbutton}
+
+            return render(request, 'recipes/recipes.html', context)
+
+        else:
+            return render(request, 'recipes/recipes.html')
+
     else:
-        form = forms.RecipeForm()
-    return render(request, 'recipes/recipes.html', {'form': form, 'search_result': search_result})
+        return render(request, 'recipes/recipes.html')
