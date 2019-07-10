@@ -140,7 +140,8 @@ def form_view(request):
 
             print("Validation success!")
             # redirect, i want to update this so that it goes to the beer lists page later
-            return HttpResponse("Recipe added. Thank you")
+            # return HttpResponse("Recipe added. Thank you")
+            return HttpResponseRedirect(reverse('index'))
     else:
         form = forms.NewRecipe()
     return render(request, 'recipes/addrecipe.html', {'form': form})

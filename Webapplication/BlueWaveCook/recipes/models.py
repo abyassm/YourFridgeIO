@@ -6,27 +6,13 @@ from datetime import datetime
 class Recipe(models.Model):
     name = models.CharField(max_length=250)
     calories = models.IntegerField()
-    image = models.ImageField(upload_to="recipes/static/images")
+    image = models.ImageField()
     ingredients = models.CharField(max_length=1000)
     instructions = models.CharField(max_length=1500)
     def __str__(self):
         
          return self.name
 
-
-
-class Appetizer(Recipe):
-    
-    pass
-
-class Vegetable(Recipe):
-    
-    pass
-class Fruit(Recipe):
-    pass
-
-class Meat(Recipe):
-    pass
 
 
 class Signup(models.Model):

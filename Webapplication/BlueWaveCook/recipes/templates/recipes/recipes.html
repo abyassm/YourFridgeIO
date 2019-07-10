@@ -31,8 +31,10 @@
     
                 {{result.name}}
                 <br />
-                {{ result.image.url }}
-                <br />
+                <!-- {% load static %} -->
+               <img src= "{{ result.image.url }}" alt="img">
+            
+               <br />
 
             {% endfor %}
         {% else %}

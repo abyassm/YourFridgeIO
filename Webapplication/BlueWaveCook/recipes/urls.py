@@ -1,5 +1,7 @@
 from django.urls import path
 
+from django.conf import settings
+
 from . import views
 
 urlpatterns = [
@@ -13,3 +15,4 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),
     path('add_recipe/', views.form_view, name="add_recipe"),
 ]
+    
