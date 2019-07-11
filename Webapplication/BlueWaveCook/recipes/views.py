@@ -100,17 +100,27 @@ def recipes(request):
     if request.method == 'GET':
         query = request.GET.get('q')
 
+
         submitbutton = request.GET.get('submit')
 
         if query is not None:
-            lookups = Q(name__icontains=query)
+              
+              
+              if request.GET.get('searchType') == 'byRecipe':
+                     lookups = Q(name__icontains=query)
+              elif request.GET.get('searchType') == 'byIngredients':
+                     lookups = Q(ingredients__icontains=query)
+              
 
-            results = Recipe.objects.filter(lookups).distinct()
+              results = Recipe.objects.filter(lookups).distinct()
 
-            context = {'results': results,
-                       'submitbutton': submitbutton}
+              context = {'results': results,
+                          'submitbutton': submitbutton}
+              
+                   
+          
 
-            return render(request, 'recipes/recipes.html', context)
+              return render(request, 'recipes/recipes.html', context)
 
         else:
             return render(request, 'recipes/recipes.html')
@@ -134,8 +144,14 @@ def form_view(request):
             recipe_calories = form.cleaned_data['calories']
             recipe_instructions = form.cleaned_data['instructions']
 
+            arr = recipe_ingredients.split(', ')
+            arrCount = len(arr)
+
             new_recipe = Recipe(name=recipe_name, image=recipe_image, ingredients=recipe_ingredients, calories=recipe_calories,
-                                instructions=recipe_instructions)
+                                instructions=recipe_instructions, ingredientCount=arrCount)
+
+
+            
             new_recipe.save()
 
             print("Validation success!")

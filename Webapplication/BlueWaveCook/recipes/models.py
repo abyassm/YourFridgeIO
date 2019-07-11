@@ -9,10 +9,17 @@ class Recipe(models.Model):
     image = models.ImageField()
     ingredients = models.CharField(max_length=1000)
     instructions = models.CharField(max_length=1500)
+    ingredientCount = models.IntegerField()
     def __str__(self):
         
          return self.name
+    # def ingredients_list(self):
 
+
+    #     ingredientsList = Recipe.ingredients.split(", ")
+        
+
+    #     return ingredientsList,totalIngredients
 
 
 class Signup(models.Model):

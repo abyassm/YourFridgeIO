@@ -15,9 +15,15 @@
     <p>Recipes coming soon!</p>
 
     
-    <form action="{% url 'recipes' %}" method="GET" value="{{request.GET.q}}">
+    <form action="{% url 'recipes' %}" method="GET">
         <!-- {{ form.as_p }} -->
         Search<input type="text" name="q" value="{{request.GET.q}}">
+        By <select name="searchType" value="{{request.GET.searchType}}" >
+            
+            <option value="byRecipe">Recipe</option>
+            <option value="byIngredients">Ingredients</option>
+            
+        </select>
         <button type="submit" name="submit" value="Search">search</button>
 
     </form><br>
@@ -42,7 +48,7 @@
         {% endif %}
     {% endif %}
     
-    <article class='recipe-card'>
+    <!-- <article class='recipe-card'>
         <h2>Creamy Carrot Soup</h2>
         <div id='carousel' class='recipe-pic-frame'>
             <div id='sliderBox' class='slider-box'>
@@ -112,7 +118,7 @@
     
             <p>Exchanges: 1 vegetable, 1 fat</p>
         </section>
-    </article>
+    </article> -->
     
     
     

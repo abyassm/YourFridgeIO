@@ -11,9 +11,12 @@ from .models import Recipe
 
 
 class NewRecipe(forms.ModelForm):
+    count = 0
     class Meta():
         model = Recipe
-        fields = '__all__'
+        fields = ('name', 'calories', 'image', 'ingredients', 'instructions',)
+        
+        
 
 class UserForm(forms.ModelForm):
       password = forms.CharField(label="Password", widget=forms.PasswordInput())
@@ -46,16 +49,7 @@ class UserLogin(AuthenticationForm):
                 username=username, password=password)
             if self.user_cache is None:
                 raise forms.ValidationError(
-                    ("Email ou Senha errados"))
+                    ("Email error"))
             elif not self.user_cache.is_active:
                 raise forms.ValidationError(("This account is inactive."))
         return self.cleaned_data
-
-
-class RecipeForm(forms.Form):
-    recipe = forms.CharField(max_length=150)
-
-    def search(self):
-        result = {}
-        recipe = self.cleaned_data['recipe']
-        return result
