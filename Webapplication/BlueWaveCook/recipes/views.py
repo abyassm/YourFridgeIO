@@ -108,11 +108,41 @@ def recipes(request):
               
               if request.GET.get('searchType') == 'byRecipe':
                      lookups = Q(name__icontains=query)
+                     results = Recipe.objects.filter(lookups).distinct()
               elif request.GET.get('searchType') == 'byIngredients':
                      lookups = Q(ingredients__icontains=query)
+                     results = Recipe.objects.filter(lookups).distinct()
+              elif request.GET.get('searchType') == 'ByFridge':
+                     arr1 = query.split(", ")
+                     inputCount = len(arr1)
+                     #find recipes with set amount of ingredients or less
+                     lookups = Q(ingredientCount__lte=inputCount)
+                     results1 = Recipe.objects.filter(lookups).distinct()
+                     #
+                     flag = 1
+                     counter = 0
+                     results = []
+                     for x in results1:
+                           #Work in progress
+                           flag = 1
+                           ingredientsArr = x.ingredients.split(", ")
+                           for i in range(0, len(ingredientsArr)):
+                                 for y in range(0,len(arr1)):
+                                       if ingredientsArr[i] != arr1[y]:
+                                             flag = 1
+                                       elif ingredientsArr[i] == arr1[y]:
+                                             flag = 0
+                                             break
+                           if flag == 0:
+                                 results.append(x)
+                                 counter = counter + 1
+
+                                             
+
               
 
-              results = Recipe.objects.filter(lookups).distinct()
+              
+
 
               context = {'results': results,
                           'submitbutton': submitbutton}

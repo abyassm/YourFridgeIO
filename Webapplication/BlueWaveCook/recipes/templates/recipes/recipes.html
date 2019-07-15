@@ -12,16 +12,17 @@
 
 <body>
     {% include "recipes/navbar.html" %}
-    <p>Recipes coming soon!</p>
+    <p>You can create and search any recipe!</p>
 
     
     <form action="{% url 'recipes' %}" method="GET">
         <!-- {{ form.as_p }} -->
-        Search<input type="text" name="q" value="{{request.GET.q}}">
+        Search &nbsp;<input type="text" name="q" value="{{request.GET.q}}">
         By <select name="searchType" value="{{request.GET.searchType}}" >
             
             <option value="byRecipe">Recipe</option>
             <option value="byIngredients">Ingredients</option>
+            <option value="ByFridge">My Fridge</option>
             
         </select>
         <button type="submit" name="submit" value="Search">search</button>
