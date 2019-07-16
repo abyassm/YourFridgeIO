@@ -31,9 +31,8 @@ def contact(request):
 def footer(request):
     return render(request, 'recipes/footer.html')
 
-
-def recipedetail(request):
-    return render(request, 'recipes/recipedetail.html')
+def footer(request):
+    return render(request, 'recipes/footer.html')
 
 
 def login_user(request):

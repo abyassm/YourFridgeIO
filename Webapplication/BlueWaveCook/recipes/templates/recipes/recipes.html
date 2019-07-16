@@ -75,7 +75,9 @@
 
                        
             {% for result in results %}
-            <div class="row">
+
+
+            <a href="/recipedetail/"><div class="row">
                 <div class="column">
                     {{result.name}}
                     <img src="{{ result.image.url }}" alt="" style="width:100%">
@@ -87,8 +89,9 @@
                      <div class="column">
                     {{result.name}}
                     <img src="{{ result.image.url }}" alt="" style="width:100%">
+                   <!-- <li>{{result.instructions}}</li> <br>/ -->
                     </div>
-            </div>
+            </div></a>
             {% endfor %}
         {% else %}
         No search results for this query
