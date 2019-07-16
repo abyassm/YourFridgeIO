@@ -120,7 +120,6 @@ def recipes(request):
                      results1 = Recipe.objects.filter(lookups).distinct()
                      #
                      flag = 1
-                     counter = 0
                      results = []
                      for x in results1:
                            #Work in progress
@@ -135,7 +134,7 @@ def recipes(request):
                                              break
                            if flag == 0:
                                  results.append(x)
-                                 counter = counter + 1
+                                 
 
                                              
 

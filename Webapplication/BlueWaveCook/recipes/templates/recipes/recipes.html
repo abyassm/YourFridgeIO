@@ -10,6 +10,32 @@
     <link rel="stylesheet" type="text/css" href="{% static '../static/css/recipes.css' %}">
 </head>
 
+<style>
+    
+    img {
+        border: 2px solid orangered;
+        border-radius: 4px;
+        padding: 0px;
+        width: 200px;
+        
+    }
+ .column {
+  float: left;
+  width: 33.33%;
+  padding: 25px;
+}
+
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+
+
+    
+</style>
+
 <body>
     {% include "recipes/navbar.html" %}
     <p>You can create and search any recipe!</p>
@@ -32,17 +58,37 @@
     {% if submitbutton == 'Search' and request.GET.q != '' %}
         {% if results %}
             <h1>Results for <b>{{ request.GET.q }}</b></h1>
-            <br /><br />
-    
-            {% for result in results %}
-    
-                {{result.name}}
-                <br />
-                <!-- {% load static %} -->
-               <img src= "{{ result.image.url }}" alt="img">
-            
-               <br />
+            <br />
 
+            <!-- {% for result in results %}
+
+            {% if forloop.counter|divisibleby:3 %}
+                <br />
+            {% endif %}
+            <div id = "recipe1">
+                {{result.name}}
+                <img src="{{ result.image.url }}" alt="">
+            </div>
+            {% endfor %} -->
+
+             
+
+                       
+            {% for result in results %}
+            <div class="row">
+                <div class="column">
+                    {{result.name}}
+                    <img src="{{ result.image.url }}" alt="" style="width:100%">
+                    </div>
+                    <div class="column">
+                        {{result.name}}
+                        <img src="{{ result.image.url }}" alt="" style="width:100%">
+                    </div>
+                     <div class="column">
+                    {{result.name}}
+                    <img src="{{ result.image.url }}" alt="" style="width:100%">
+                    </div>
+            </div>
             {% endfor %}
         {% else %}
         No search results for this query
@@ -57,8 +103,8 @@
                 <div class='recipe-pic pic2' role='img'></div>
                 <div class='recipe-pic pic3' role='img'></div>
             </div>
-        </div>
-        <section>
+        </div> -->
+        <!-- <section>
             <h3>Ingredients</h3>
             <ul class='ingredient-list'>
                 <li>1 tablespoon butter</li>
@@ -119,8 +165,8 @@
     
             <p>Exchanges: 1 vegetable, 1 fat</p>
         </section>
-    </article> -->
-    
+    </article>
+     -->
     
     
     {% include "recipes/footer.html" %}
