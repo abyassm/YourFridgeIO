@@ -11,6 +11,7 @@ from django.contrib import messages
 from .models import Recipe
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 # Create your views here.
@@ -194,3 +195,13 @@ def form_view(request):
     else:
         form = forms.NewRecipe()
     return render(request, 'recipes/addrecipe.html', {'form': form})
+
+def recipe_detail_view(request, id=None):
+    
+    recipe = get_object_or_404(Recipe, id=id)
+    ing = recipe.instructions.split(", ")
+    
+    context= {'recipe': recipe, 'ing': ing,
+              }
+    
+    return render(request, 'recipes/recipedetail.html', context)

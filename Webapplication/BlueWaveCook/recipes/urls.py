@@ -14,6 +14,8 @@ urlpatterns = [
     path('footer/', views.footer, name='footer'),
     path('logout/', views.logout_user, name='logout'),
     path('add_recipe/', views.form_view, name="add_recipe"),
-    path('recipedetail/', views.recipedetail, name='recipedetail')
+    # path('recipedetail/', views.recipedetail, name='recipedetail'),
+    path('recipedetail/<int:id>', views.recipe_detail_view, name='recipedetail'),
+
 ]
     

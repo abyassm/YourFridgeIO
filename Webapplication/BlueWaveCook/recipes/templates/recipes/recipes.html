@@ -76,21 +76,14 @@
                        
             {% for result in results %}
 
-
-            <a href="/recipedetail/"><div class="row">
+           
+            <a href="/recipedetail/{{result.id}}"><div class="row">
+               
                 <div class="column">
                     {{result.name}}
                     <img src="{{ result.image.url }}" alt="" style="width:100%">
                     </div>
-                    <div class="column">
-                        {{result.name}}
-                        <img src="{{ result.image.url }}" alt="" style="width:100%">
-                    </div>
-                     <div class="column">
-                    {{result.name}}
-                    <img src="{{ result.image.url }}" alt="" style="width:100%">
-                   <!-- <li>{{result.instructions}}</li> <br>/ -->
-                    </div>
+                    
             </div></a>
             {% endfor %}
         {% else %}

@@ -4,19 +4,62 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>SignUp Page</title>
+    <title id="">recipe details</title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static '../static/css/signup.css' %}">
 </head>
 
+<style>
+    img {
+        border: 2px solid orangered;
+        border-radius: 4px;
+        padding: 0px;
+        width: 20px;
+
+    }
+
+    .column {
+    float: left;
+    width: 40.33%;
+    padding: 25px;
+    }
+
+    
+    .row::after {
+    content: "";
+    clear: both;
+    display: table;
+    } 
+</style>
+
 <body>
     {% include "recipes/navbar.html" %}
 
-    <p>Hello from recipe details</p>
+    <p></p>
+        
+        <h3>{{recipe.name}}</h3>
+        <div class="row">
+        <div class="column">
+        <img src="{{ recipe.image.url }}" alt="" style="width:100%"></div></div>
+
+        <br/>
+        <h5>Ingredients:</h5>
+        <h6>{{recipe.ingredients}}</h6><br/>
+        <h5>Instructions:</h5>
+        {% for i in ing %}
+        <h6> {{ forloop.counter }}) {{i}}</h6>
+        <br/>
+        {% endfor %}
+    <p>Go back to <a href="/recipes/">search more recipes </a></p>
     {% include "recipes/footer.html"%}
 
 
 </body>
+
+
+
+
+
 
 </html>
