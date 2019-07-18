@@ -105,7 +105,6 @@ def recipes(request):
     if request.method == 'GET':
         query = request.GET.get('q')
 
-
         submitbutton = request.GET.get('submit')
 
         if query is not None:
@@ -117,6 +116,10 @@ def recipes(request):
               elif request.GET.get('searchType') == 'byIngredients':
                      lookups = Q(ingredients__icontains=query)
                      results = Recipe.objects.filter(lookups).distinct()
+              elif request.GET.get('searchType') is None:
+                     
+                     results = Recipe.objects.all()
+              
               elif request.GET.get('searchType') == 'ByFridge':
                      arr1 = query.split(", ")
                      inputCount = len(arr1)
@@ -139,21 +142,16 @@ def recipes(request):
                                              break
                            if flag == 0:
                                  results.append(x)
-                                 
 
-                                             
 
+              elif request.GET.get('searchType') == 'DisplayAll':
+                     results = Recipe.objects.all()
               
-
               
-
-
+              
               context = {'results': results,
                           'submitbutton': submitbutton}
               
-                   
-          
-
               return render(request, 'recipes/recipes.html', context)
 
         else:

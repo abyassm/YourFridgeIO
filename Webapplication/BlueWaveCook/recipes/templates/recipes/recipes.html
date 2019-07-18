@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en">
-
+<main>
 <head>
     <meta charset="UTF-8">
     <title>Recipes Page</title>
@@ -23,6 +23,7 @@
   float: left;
   width: 33.33%;
   padding: 25px;
+  
 }
 
 
@@ -32,20 +33,29 @@
   display: table;
 } 
 
+body{
+    margin-left:2%;
+    margin-right:2%;
+    
+}
+
+
+
 
     
 </style>
 
-<body>
+<body onload="setSelections();">
     {% include "recipes/navbar.html" %}
-    <p>You can create and search any recipe!</p>
+    <p> </p>
 
     
-    <form action="{% url 'recipes' %}" method="GET">
+    <form action="{% url 'recipes' %}" name="myForm" method="GET" >
         <!-- {{ form.as_p }} -->
         Search &nbsp;<input type="text" name="q" value="{{request.GET.q}}">
-        By <select name="searchType" value="{{request.GET.searchType}}" >
+        By <select name="searchType" id="searchType" value="{{request.GET.searchType}}" >
             
+            <option value="DisplayAll" selected >Show All</option>
             <option value="byRecipe">Recipe</option>
             <option value="byIngredients">Ingredients</option>
             <option value="ByFridge">My Fridge</option>
@@ -78,12 +88,10 @@
 
            
             <a href="/recipedetail/{{result.id}}"><div class="row">
-               
                 <div class="column">
                     {{result.name}}
                     <img src="{{ result.image.url }}" alt="" style="width:100%">
-                    </div>
-                    
+                    </div>  
             </div></a>
             {% endfor %}
         {% else %}
@@ -168,5 +176,36 @@
     {% include "recipes/footer.html" %}
 
 </body>
+</main>
+
+
+<script type="text/javascript">
+    function setSelections() {
+          
+          document.myForm.searchType.value = getQueryValue("searchType");
+    };
+
+    function getQueryValue(key) {
+        var queryString = window.location.search.substring(1);
+        var queryParams = queryString.split("&");
+        for (var i = 0; i < queryParams.length; i++) {
+            if (queryParams[i].indexOf("=") > 0) {
+                var keyValue = queryParams[i].split("=");
+                if (keyValue[0] == key) {
+                    return keyValue[1];
+                }
+            }
+        }
+
+        return null;
+    }
+</script>
+
+
+
+
+
+
+
 
 </html>
