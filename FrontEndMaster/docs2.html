@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html>
+
+<style>
+table{
+	border:solid;
+	border-color: black
+}
+td{
+	border:solid;
+	border-color: black
+}
+th{
+	border:solid;
+	border-color: black
+}
+h1{
+	color: blue;
+	font-size:36px;
+}
+h2{
+	color:blue;
+}
+</style>
 <body>
 
 <article>
   <h1>BlueWaveCook</h1>
-	<h2>Requirement Document</h2>
+	<h1 style="font-size:30px">Requirement Document</h1>
 	<h3>CP317</h3>
-	
-		   
-		   
-	
-	
-	
+	<h2>1. Introduction</a></h2>
 	<ul>
-    <li><a href="#">Introduction</a></li>
     <li><a href="#">1.1The purpose of this document</a></li>
 	 <li><a href="#">1.2 the scope</a></li>
 	  <li><a href="#">1.3 Acronmys</a></li>
 	   <li><a href="#">1.4 References</a></li>
 	    <li><a href="#">Authored by:</a></li>
-			</ul>
-		   <strong>1 introduction</strong>
+			</ul> 
 		   <br>
 				<strong>1.1 the purpose of this document:</strong>
 					<p>This document states the requirement and specification for our recipes website. This document contains design and structure
@@ -35,9 +50,8 @@
 				
 				<hr>
 
-
+	<h2>2. Current System Description</h2>
 	<ul>
-    <li><a href="#">2. Current System Description</a>
 	<ul>
 			<li><a href="#">2.1 Purpose:</a></li>
 			<li><a href="#">2.2 Product functions:</a></li>
@@ -46,18 +60,12 @@
 			   <li><a href="#">2.5 Assumptions and dependencies:</a></li>
 			   <li><a href="#">2.3 User characteristics:</a></li>
 			     <li><a href="#">2.4 constrains:</a></li>
-					
-	
-	
-	
-	
 	</ul>
 	
 	
 	</li>
 					
 </ul>
- <strong>2. Current System Description</strong>
 		   <br>
 		<strong>2.1 The Purpose:</strong>
 			<p>1.	This is a web-based application with two main components. First, 
@@ -90,117 +98,156 @@
 				
 				
 		
- <li><a href="#">3. Functional Requirements</a>
+ <h2><a href="#">3. Functional Requirements</a></h2>
 	<ul>
 			<li><a href="#">3.1 diagram:</a></li>
-			<img src="p1.png">
-			
-	
-	
-	
-	
+			<img src="p1.png" style="width:600px; height:600px;border:solid;border-color:black;">
+			<img src="p2.png" style="width:600px; height:600px;border:solid;border-color:black;">
+			<img src="p3.png" style="width:600px; height:600px;border:solid;border-color:black;">
+			<img src="p4.png" style="width:600px; height:600px;border:solid;border-color:black;">
+			<img src="p5.png" style="width:300px; height:600px;border:solid;border-color:black;">
+			<img src="p6.png" style="width:600px; height:600px;border:solid;border-color:black;">
 	</ul>
-	
-	
-	</li>
-					
 
+	<table style="border:solid">
+		<tr>
+			<th></th>
+			<th></th>
+			<th>User</th>
+			<th>System</th>
+		</tr>
+		<tr>
+			<td rowspan="2">Rating System</td>
+			<th>Functional</th>
+			<td>To review anything they have to be signed in.</td>
+			<td>
+				<ul>•	validate the review (turn it into plain text).</ul>
+				<ul>•	Check the length of the review.</ul>
+				<ul>•	Check that the review does not have any code in it.</ul>
+				<ul>•	Check for profanity in the review.</ul>
+				<ul>•	Check for profanity in the review.</ul>
+			</td>
+		</tr>
+		<tr>
+			<th>Non functional</th>
+			<td>Must be a certain length (100 characters)</td>
+			<td>
+				<ul>•	Logs users out after a certain time of inactivity</ul>
+				<ul>•	Accept one request even if clicked to submit multiple times within a time frame (20 seconds)</ul>
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="2">Login</td>
+			<th>Functional</th>
+			<td>Will sign user into website.</td>
+			<td>
+				<ul>•	Enter credentials</ul>
+				<ul>•	Query database with credentials </ul>
+				<ul>•	Return user login status to page and initiate session</ul>
+			</td>
+		</tr>
+		<tr>
+			<th>Non functional</th>
+			<td>Password and username must have certain length(32 max)</td>
+			<td><ul>•	Must query database in short amount of time (<3000 MS) </ul></3000> </td>
+		</tr>
+		<tr>
+			<th rowspan="2">logout</th>
+			<th>Functional</th>
+			<td>
+				<ul>•	Logs user out  when they click logout.</ul>
+				<ul>•	User must be logged in.</ul>
+			</td>
+			<td>
+				<ul>•	Invalidate session.</ul>
+			</td>
+		</tr>
+		<tr>
+			<th>Non functional</th>
+			<td>•	If they already timed out they cannot logout</td>
+			<td>•	After 60 minutes invalidate session</td>
+		</tr>
+		<tr>
+			<th rowspan="2">add recipes</th>
+			<th>Functional</th>
+			<td>
+				<ul>•	User clicks on add recipes.</ul>
+				<ul>•	Enters recipe information then submit.</ul>
+			</td>
+			<td>
+				<ul>•	Give user form to enter recipe information(name, category, ingredients, instructions, image url)</ul>
+			</td>
+		</tr>
+		<tr>
+			<th>Non functional</th>
+			<td>•	User must be logged in.</td>
+			<td>
+				<ul>•	Check if user is logged in</ul>
+				<ul>•	Check the size of all the categories in the form to make sure they do not enter too much data.</ul>
+				<ul>•	Insert into database</ul>
+			</td>
+		</tr>
+		<tr>
+			<th rowspan="2">Search</th>
+			<th>Functional</th>
+			<td>
+				<ul>•	User fills in search criteria and click search.</ul>
+			</td>
+			<td>
+				<ul>•	The search criteria is passed to the backend.</ul>
+				<ul>•	The criteria is used to query the database.</ul>
+				<ul>•	The result is returned to the frontend to be displayed.</ul>
+			</td>
+		</tr>
+		<tr>
+			<th>Non functional</th>
+			<td></td>
+			<td>•	Time out if the search takes too long (>10000MS).</td>
+		</tr>
+	</table>
+	<p>3.3 USE CASE</p>
 
+	<h1>4. Interface Requirements</h1>
+	<p>4.1 Selction Screen (navigation)</p>
+	<img src="p7.png">
+	<p>4.2 Selection Screen (recipes page)</p>
+	<img src="p8.png">
+	<h2>5. Performance Requirements</h2>
+	<p>
+	<h3>5.1 Hardware Requirements</h3>
+		<p>	This software(website) requires a computer run or smartphone that connects with internet will work as well. </p>
+	<h3>5.2 Software Requirements </h3>
+		<p>	Internet browser</p>
 
-		
-		 
-		
+	<h2>6. Project Plan</h2>
+	<h2>7. Team Formations</h2>
+	<strong> Django Templates</strong>
+	<ul>-Abdirahman Yassin</ul>
+	<ul>-Ryan jiffri</ul>
+	<ul>-Faiq Ahmed</ul>
+
+	<strong> HTML, CSS and JAVASCRIPT </strong>
+	<ul>-Abraham Banka</ul>
+	<ul>-Ismail kabar</ul>
+
+	<strong>Modellers and Database</strong>
+	<ul>- Gulnar Saharya</ul>
+	<ul>- Anushaanth Jayanthan</ul>
+	<ul>- Jules Mbende Bong</ul>
+
+	<h2>8. Portability</h2>
+	<p>It runs on cross-platforms; you can browse from any device that connected to the internet.</p>
+
+	<h2>9. Optional Features</h2>
+	<p>
+		Subscribe to newsletter<br>
+		Subscribe to users;
+	</p>
+
+	<h2>10. Versions</h2>
+	•	1.0	May 24th, 2019
+							
 </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <p><strong>Authored by:</strong> 
 	<li>Abraham Banka</li>
