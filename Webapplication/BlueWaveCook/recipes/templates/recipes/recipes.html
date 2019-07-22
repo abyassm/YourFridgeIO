@@ -19,24 +19,26 @@
         width: 200px;
         
     }
- .column {
+ .recipe {
   float: left;
   width: 33.33%;
+  height:180%;
   padding: 25px;
-  
+  background-color:grey;
+  margin-bottom: 10px;
 }
 
 
-.row::after {
+.recipe::after {
   content: "";
   clear: both;
-  display: table;
+  
 } 
 
 body{
     margin-left:2%;
     margin-right:2%;
-    
+    display: inline-grid;
 }
 
 
@@ -87,11 +89,11 @@ body{
             {% for result in results %}
 
            
-            <a href="/recipedetail/{{result.id}}"><div class="row">
-                <div class="column">
+            <a href="/recipedetail/{{result.id}}"><div class="recipe">
+                
                     {{result.name}}
                     <img src="{{ result.image.url }}" alt="" style="width:100%">
-                    </div>  
+                
             </div></a>
             {% endfor %}
         {% else %}
