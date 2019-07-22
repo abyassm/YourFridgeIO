@@ -1,0 +1,39 @@
+img {
+        border: 2px solid orangered;
+        border-radius: 4px;
+        padding: 0px;
+        width: 20px;
+
+    }
+
+    .column {
+    float: left;
+    width: 40.33%;
+    padding: 25px;
+    }
+
+    
+    .row::after {
+    content: "";
+    clear: both;
+    display: table;
+    } 
+
+    .icon {
+		text-decoration: none;
+		border-bottom: none;
+		position: relative;
+    }
+    .icon.rounded {
+			background-color: #383b43;
+			border-radius: 100%;
+			color: #ffffff;
+			display: inline-block;
+			height: 3.25em;
+			line-height: 3.25em;
+			text-align: center;
+			width: 3.25em;
+        }
+        .icon.rounded.fa-facebook {
+				background-color: #39599f;
+        }
