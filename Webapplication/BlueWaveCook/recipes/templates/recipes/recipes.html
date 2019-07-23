@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static '../static/css/recipes.css' %}">
+    <!-- <link rel="stylesheet" href="{% static '../static/css/style.css' %}"> -->
 </head>
 
 <style>
@@ -21,10 +22,10 @@
     }
  .recipe {
   float: left;
-  width: 33.33%;
-  height:180%;
+  width: 100%;
+  height:100%;
   padding: 25px;
-  background-color:grey;
+  /* background-color:grey; */
   margin-bottom: 10px;
 }
 
@@ -66,35 +67,24 @@
         <button type="submit" name="submit" value="Search">search</button>
 
     </form><br>
-    <a href="/add_recipe/"> Create Recipe </a>
+    <a href="/add_recipe/" button type="submit" name="submit" value="Search"> Create Recipe </a>
     {% if submitbutton == 'Search' and request.GET.q != '' %}
         {% if results %}
             <h1>Results for <b>{{ request.GET.q }}</b></h1>
             <br />
 
-            <!-- {% for result in results %}
-
-            {% if forloop.counter|divisibleby:3 %}
-                <br />
-            {% endif %}
-            <div id = "recipe1">
-                {{result.name}}
-                <img src="{{ result.image.url }}" alt="">
-            </div>
-            {% endfor %} -->
-
-             
-
                        
             {% for result in results %}
 
            
-            <a href="/recipedetail/{{result.id}}"><div class="recipe">
+            <a href="/recipedetail/{{result.id}}">
+                <div class="recipe">
                 
-                    {{result.name}}
-                    <img src="{{ result.image.url }}" alt="" style="width:100%">
+                    <h3>{{result.name}}</h3>
+                    <img src="{{ result.image.url }}" alt="" style="width:100%;height:100%">
                 
-            </div></a>
+                </div>
+            </a>
             {% endfor %}
         {% else %}
         No search results for this query
