@@ -12,6 +12,8 @@ from .models import Recipe
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+
+import pytest
 # Create your views here.
 
 # Create your views here.
@@ -109,6 +111,13 @@ def recipes(request):
 
         if query is not None:
               
+              if query == "":
+                print("hi")
+                result = Recipe.objects.all()
+                context = {'results': result,
+                          'submitbutton': submitbutton}
+                return render(request, 'recipes/recipes.html', context)
+                
               
               if request.GET.get('searchType') == 'byRecipe':
                      lookups = Q(name__icontains=query)
@@ -121,27 +130,25 @@ def recipes(request):
                      results = Recipe.objects.all()
               
               elif request.GET.get('searchType') == 'ByFridge':
-                     arr1 = query.split(", ")
-                     inputCount = len(arr1)
+                     input = query.split(", ")
+                     inputCount = len(input)
                      #find recipes with set amount of ingredients or less
                      lookups = Q(ingredientCount__lte=inputCount)
                      results1 = Recipe.objects.filter(lookups).distinct()
                      #
-                     flag = 1
+                     flag = 0
                      results = []
                      for x in results1:
-                           #Work in progress
-                           flag = 1
+                           #magic
+                           flag = 0
                            ingredientsArr = x.ingredients.split(", ")
                            for i in range(0, len(ingredientsArr)):
-                                 for y in range(0,len(arr1)):
-                                       if ingredientsArr[i] != arr1[y]:
-                                             flag = 1
-                                       elif ingredientsArr[i] == arr1[y]:
-                                             flag = 0
-                                             break
+                                 if ingredientsArr[i] not in query:
+                                   flag = 1
+                                   print(ingredientsArr[i]+" is not in")
+                                    
                            if flag == 0:
-                                 results.append(x)
+                                results.append(x)
 
 
               elif request.GET.get('searchType') == 'DisplayAll':

@@ -8,6 +8,66 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static '../static/css/login.css' %}">
+
+    <style>
+        html{
+            margin-left:0px;
+            padding-left:0px;
+        }
+        body{
+            margin-left:0px;
+            padding-left:0px;
+            background-color: teal;
+        }
+        h1{
+            color:black;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button{
+            border-radius:20ex;
+            border-width:3px;
+            border:solid;
+            background-color: teal;
+            color:white;
+            font-weight:bold;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width:80px;
+            height:40px;
+        }
+        button:hover{
+            background-color: white;
+            color:teal;
+        }
+        input{
+            background-color: white;
+            border:solid;
+            border-color:teal;
+            border-radius: 20em;
+            padding-left:10px;
+            color:black;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        form{
+            top:20%;
+            left:50%;
+            position:absolute;
+            margin-left:-300px;
+            border:solid;
+            border-width:3px;
+            border-radius:30px;
+            border-color:white;
+            width:600px;
+            height:300px;
+            align-content:center;
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,7 +80,7 @@
         {% csrf_token %}
 
         <div class="ui raised very padded center aligned text container segment">
-            <h1 class="ui header">Log in</h1>
+            <h1 class="ui header">Log in:</h1>
             <br>
             <div class="field">
                 <div class="ui left icon input">
@@ -40,7 +100,7 @@
                 <button class=" ui large teal button" type="submit">Log in</button>
             </div>
             <br>
-            <p>Don't have an account? <a href="/signup/"> Sign up </a></p>
+            <p>Don't have an account? <a href="/signup/" /*style="color:white"*/> Sign up </a></p>
         </div>
 
     </form>

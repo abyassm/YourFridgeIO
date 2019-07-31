@@ -8,6 +8,84 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static '../static/css/signup.css' %}">
+    <style>
+            html{
+                margin-left:0px;
+                padding-left:0px;
+            }
+            body{
+                margin-left:0px;
+                padding-left:0px;
+                background-color: teal;
+            }
+            h1, h2{
+                color:black;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            button{
+                border-radius:20ex;
+                border-width:3px;
+                border:solid;
+                background-color: teal;
+                color:white;
+                font-weight:bold;
+                display: block;
+                /*
+                margin-left: auto;
+                margin-right: auto;
+                */
+                width:80px;
+                height:40px;
+            }
+            button:hover{
+                background-color: white;
+                color:teal;
+            }
+            input{
+                background-color: white;
+                border:solid;
+                border-color:teal;
+                border-radius: 20em;
+                padding-left:10px;
+                color:black;
+                display: block;
+                width:270px;
+                /*
+                margin-left: auto;
+                margin-right: auto;
+                */
+            }
+            form{
+                /*top:20%;
+                left:50%;
+                position:absolute;
+                margin-left:200px;*/
+                border:solid;
+                border-width:3px;
+                border-radius:30px;
+                border-color:white;
+                width:600px;
+                height:fit-content;
+                padding-bottom: 20px;
+                padding-top:20px;
+                padding-left: 15px;
+                align-content:center;
+                background-color: white;
+            }
+            input[class="ui primary button"]{
+                background-color: teal;
+                color:white;
+                border-color:teal;
+                border:block;
+                border-width:3px;
+            }
+            input[class="ui primary button"]:hover{
+                background-color: white;
+                color:teal;
+            }
+        </style>
 </head>
 
 <body>
@@ -28,7 +106,7 @@
         <div class='ui container'>
             <h2>Sign up</h2>
             <div class="ui raised form segment">
-                <p>Don't have an account? Let's go ahead and get you signed up.</p>
+                <p>Don't have an account? Let's go ahead and get you signed up!</p>
 
                 <form enctype="multipart/form-data" method="POST">
                     {% csrf_token %}
@@ -41,9 +119,10 @@
 
                     {% endfor %}
 
-                    <div class="inline field">
-                        <input type="checkbox" name="terms">
-                        <label>I agree to the Terms and Conditions</label>
+                    <div class="inline field" >
+                        
+                        <label >I agree to the Terms and Conditions of use. <input type="checkbox" name="terms" style="right:50px"></label>
+                        
                     </div>
                     <div class="actions">
                         <input type="submit" name="commit" value="Register" class="ui primary button">
@@ -53,9 +132,10 @@
                     </div>
 
                 </form>
+                <br>
                 <div class="ui center aligned segment">
-                    <h5>Already have an account?</h5>
-                    <button onclick="location.href='/login/';" class="ui teal button">Log in</button>
+                    <h5>Already have an account? <a href='/login/' class="ui teal button" style="color: white">Log in</a></h5>
+                    
                 </div>
 
             </div>
