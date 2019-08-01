@@ -10,18 +10,10 @@ class Recipe(models.Model):
     ingredients = models.CharField(max_length=1000)
     instructions = models.CharField(max_length=1500)
     ingredientCount = models.IntegerField()
-    #categories = models.CharField(max_length=300)
 
     def __str__(self):
         
          return self.name
-    # def ingredients_list(self):
-
-
-    #     ingredientsList = Recipe.ingredients.split(", ")
-        
-
-    #     return ingredientsList,totalIngredients
 class Rating(models.Model):
     recipe = models.CharField(max_length=250)
     user = models.CharField(max_length=250)
