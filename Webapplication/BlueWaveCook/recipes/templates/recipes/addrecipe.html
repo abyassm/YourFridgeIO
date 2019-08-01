@@ -6,9 +6,76 @@
     <!--title and icon-->
     <title> Add Recipe </title>
 
-    <<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static '../static/css/addrecipe.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '../static/css/addrecipe.css' %}">
+
+    <style>
+        html {
+            margin-left: 0px;
+            padding-left: 0px;
+        }
+
+        body {
+            margin-left: 0px;
+            padding-left: 0px;
+            background-color: teal;
+        }
+
+        h1 {
+            color: black;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button {
+            border-radius: 20ex;
+            border-width: 3px;
+            border: solid;
+            background-color: teal;
+            color: white;
+            font-weight: bold;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80px;
+            height: 40px;
+        }
+
+        button:hover {
+            background-color: white;
+            color: teal;
+        }
+
+        input {
+            background-color: white;
+            border: solid;
+            border-color: teal;
+            border-radius: 20em;
+            padding-left: 10px;
+            color: black;
+            display: block;
+        }
+
+        form {
+            top: 20%;
+            left: 50%;
+            position: absolute;
+            margin-left: -300px;
+            border: solid;
+            border-width: 3px;
+            border-radius: 30px;
+            border-color: white;
+            width: 600px;
+            height: fit-content;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 10px;
+            align-content: center;
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,7 +93,7 @@
                 </div>
             </fieldset>
             {% endfor %}
-        </br>
+            <br>
             <input type="submit" id="submit" class="btn btn-primary" value="Submit">
         </form>
     </div>

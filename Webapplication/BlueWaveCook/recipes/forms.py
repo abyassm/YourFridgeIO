@@ -9,6 +9,14 @@ from django.conf import settings
 import requests
 from .models import Recipe
 
+"""
+Authors:
+    Ryan Jiffri
+    Abdirahman Yassin
+    Faiq Ahmed
+    Jules Mbende Bong
+
+"""
 
 class NewRecipe(forms.ModelForm):
     count = 0
